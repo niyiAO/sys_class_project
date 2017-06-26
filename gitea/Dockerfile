@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 RUN useradd gitea -d /app -m
 
-ADD binary /app/gitea
+ADD https://dl.gitea.io/gitea/1.0/gitea-1.0-linux-386 /app/gitea
 ADD app.sh /app/entry
 RUN chmod +x /app/gitea
 RUN chmod +x /app/entry
