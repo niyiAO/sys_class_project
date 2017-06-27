@@ -4,31 +4,30 @@ services:
     image: gluster/gluster-centos
     privileged: true
     ports:
-      - "24007:24007"
-      - "2049:2049"
-      - "6010:6010"
-      - "6011:6011"
-      - "6012:6012"
-      - "38465:38465"
-      - "38466:38466"
-      - "38468:38468"
-      - "38469:38469"
-      - "49152:49152"
-      - "49153:49153"
-      - "49154:49154"
-      - "49156:49156"
-      - "49157:49157"
-      - "49158:49158"
-      - "49159:49159"
-      - "49160:49160"
-      - "49161:49161"
-      - "49162:49162"
+      - "address:24007:24007"
+      - "address:2049:2049"
+      - "address:6010:6010"
+      - "address:6011:6011"
+      - "address:6012:6012"
+      - "address:38465:38465"
+      - "address:38466:38466"
+      - "address:38468:38468"
+      - "address:38469:38469"
+      - "address:49152:49152"
+      - "address:49153:49153"
+      - "address:49154:49154"
+      - "address:49156:49156"
+      - "address:49157:49157"
+      - "address:49158:49158"
+      - "address:49159:49159"
+      - "address:49160:49160"
+      - "address:49161:49161"
+      - "address:49162:49162"
     volumes:
       - /etc/glusterfs:/etc/glusterfs
       - /var/lib/glusterd:/var/lib/glusterd
       - /var/log/glusterfs:/var/log/glusterfs
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /dev/:/dev
-      - /vagrant/gluster1/hosts:/etc/hosts
-      - /app:/app
+      - /dev:/dev
+      - /conf/gluster/hosts:/etc/hosts
       - /brick:/brick
