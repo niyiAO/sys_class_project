@@ -5,6 +5,7 @@ services:
     privileged: true
     ports:
       - "address:24007:24007"
+      - "address:24008:24008"
       - "address:2049:2049"
       - "address:6010:6010"
       - "address:6011:6011"
