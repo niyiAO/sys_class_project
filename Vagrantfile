@@ -25,10 +25,13 @@ Vagrant.configure(2) do |config|
 		config.vm.define "niyiGitea#{n}" do |niyiGitea|
 			niyiGitea.vm.hostname = "node#{n}"
 			niyiGitea.vm.network :public_network, ip: "192.168.7.25#{n}", netmask: "22", :dev => "enp4s0", :mode => 'bridge'
-			niyiGitea.vm.network :public_network, ip: "10.10.10.#{n}", netmask: "22", :dev => "br10", :mode => 'bridge'
+			niyiGitea.vm.network :public_network, ip: "10.10.10.#{n}", netmask: "22", :dev => "br25", :mode => 'bridge'
 			niyiGitea.vm.synced_folder ".", "/vagrant", disabled: false
 			
-			niyiGitea.vm.provision "deploy-gitea", type: "shell", path: "scripts/gitea-deploy.sh", run: "never" if n < 3
+			if n < 3
+				niyiGitea.vm.provision "deploy-gitea", type: "shell", path: "scripts/gitea-deploy.sh", run: "never"
+				niyiGitea.vm.provision "rescale", type: "shell", path: "scripts/rescale.sh", run: "never"
+			end
 			
 			niyiGitea.vm.provider :libvirt do |domain|
 				domain.storage :file, :size => '20G'
@@ -37,6 +40,5 @@ Vagrant.configure(2) do |config|
 			end
 		end
 	end
-
 
 end
