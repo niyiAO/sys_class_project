@@ -1,7 +1,7 @@
 ## <u>Dataflow Diagram</u>
 
-![Dataflow Diagram](images/dataflow.png =500x)
+![Dataflow Diagram](images/dataflow.png)
 
 ## <u>Network Diagram</u>
 
-![Network Diagram](images/networkdiagram.png =500x)
+![Network Diagram](images/networkdiagram.png)
