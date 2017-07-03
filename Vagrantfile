@@ -25,7 +25,12 @@ Vagrant.configure(2) do |config|
 		config.vm.define "niyiGitea#{n}" do |niyiGitea|
 			niyiGitea.vm.hostname = "node#{n}"
 			niyiGitea.vm.network :public_network, ip: "192.168.7.25#{n}", netmask: "22", :dev => "enp4s0", :mode => 'bridge'
-			niyiGitea.vm.network :public_network, ip: "10.10.10.#{n}", netmask: "22", :dev => "br25", :mode => 'bridge'
+			niyiGitea.vm.network :public_network, ip: "10.10.20.1#{n}", netmask: "22", :dev => "enp7s0.4", :mode => 'bridge'
+			
+			if n == 2
+				niyiGitea.vm.network :public_network, ip: "192.168.2.25#{n}", netmask: "22", :dev => "enp7s0.4", :mode => 'bridge'
+			end
+			
 			niyiGitea.vm.synced_folder ".", "/vagrant", disabled: false
 			
 			if n < 3

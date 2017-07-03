@@ -1,5 +1,11 @@
 
-ipaddr=$(ifconfig eth1 | awk '/inet addr/{split($2,a,":"); print a[2]}')
+if [ "$(hostname)" = "node1" ]; then
+	ipaddr=$(ifconfig eth1 | awk '/inet addr/{split($2,a,":"); print a[2]}')
+fi
+
+if [ "$(hostname)" = "node2" ]; then
+	ipaddr=$(ifconfig eth3 | awk '/inet addr/{split($2,a,":"); print a[2]}')
+fi
 
 sudo apt-get install -y glusterfs-client
 sudo mkdir /app
