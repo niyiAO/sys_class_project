@@ -1,12 +1,9 @@
 version: '2'
 services:
   app:
-    build: .
+    image: gitea/gitea
     volumes:
-      - /app/log:/app/log
-      - /app/data:/app/data
-      - /app/custom:/app/custom
-      - /app/gitea-repositories:/app/gitea-repositories
+      - /app:/data
     ports:
       - "address:2022:22"
   lb:

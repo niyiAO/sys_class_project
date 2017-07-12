@@ -9,6 +9,7 @@ fi
 
 sudo apt-get install -y glusterfs-client
 sudo mkdir /app
+sudo rm -rf /conf/gitea
 
 sed -r /g`hostname`/'s/[0-9\.]+/172.18.0.2/' /vagrant/gluster/hosts |sudo tee -a /etc/hosts
 
@@ -17,6 +18,8 @@ sudo mount -a
 
 sudo cp -r /vagrant/gitea /conf/gitea
 sudo sed -i s/address/"$ipaddr"/ /conf/gitea/docker-compose.yml
+
 cd /conf/gitea
 
-docker-compose up -d
+docker-compose down
+docker-compose up -d --build
